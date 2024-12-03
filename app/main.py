@@ -5,7 +5,15 @@ from .db.database import engine
 from .db import models
 from .routes import external, auth, crud, user
 
-app = FastAPI()
+app = FastAPI(
+    title="Weather API",
+    description="An API for managing weather data, with JWT authentication and external API integration.",
+    version="1.0.0",
+    contact={
+        "name": "Nursat",
+        "email": "nursat.seitov12@gmail.com"
+    }
+)
 
 origins = ["*"]
 
@@ -22,6 +30,8 @@ app.add_middleware(
 app.include_router(external.router)
 app.include_router(auth.router)
 app.include_router(user.router)
+app.include_router(crud.router)
+
 
 
 

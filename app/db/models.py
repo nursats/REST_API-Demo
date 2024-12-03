@@ -16,7 +16,7 @@ class WeatherData(Base):
                         nullable=False, server_default=text('now()'))
     
     owner_id = Column(Integer, ForeignKey(
-        "users.id", ondelete="CASCADE"), nullable=False)
+       "users.id", ondelete="CASCADE"), nullable=False)
 
     owner = relationship("User")
 

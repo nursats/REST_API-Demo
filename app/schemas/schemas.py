@@ -6,14 +6,16 @@ from typing import Optional
 class WeatherBase(BaseModel):
     city: str
     temperature: float
+    created_at: datetime
+    id: int
 
-
-class WeatherCreate(WeatherBase):
-    pass
+class WeatherCreate(BaseModel):
+    city: str
 
 
 class WeatherResponse(WeatherBase):
     id: int
+    owner_id: int 
 
     class Config:
         orm_mode = True 
@@ -56,4 +58,4 @@ class Token(BaseModel):
     token_type: str
 
 class TokenData(BaseModel):
-    id: Optional[str] = None
+    id: Optional[int] = None
