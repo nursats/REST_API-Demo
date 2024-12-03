@@ -4,5 +4,5 @@ from app.services.weather_api import fetch_weather
 router = APIRouter()
 
 @router.get("/test")
-async def test_external_api(city: str = "Astana"):
-    return await fetch_weather(city)
+def test_external_api(city: str = "Astana"):
+    return fetch_weather(city)

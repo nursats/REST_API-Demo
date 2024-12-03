@@ -24,7 +24,28 @@ def get_weather_data(db: Session = Depends(get_db), current_user: int = Depends(
 
 @router.post("/", status_code=status.HTTP_201_CREATED, response_model=schemas.WeatherBase, summary="Create weather data")
 def create_weather(weather_request: schemas.WeatherCreate, db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
- 
+    
+    """
+    **Request Body Example**:
+
+    json
+    {
+      "city": "Nur-Sultan",
+    }
+    
+
+    **Response Example**:
+
+    json
+    {
+      "id": 1,
+      "city": "Nur-Sultan",
+      "temperature": -10.5,
+      "owner_id": 1,
+      "created_at": "2024-12-03T12:00:00Z"
+    }
+    """
+
     city = weather_request.city
 
     try:
@@ -45,7 +66,7 @@ def create_weather(weather_request: schemas.WeatherCreate, db: Session = Depends
     db.refresh(new_weather)
 
     return new_weather
-
+    
 
 @router.delete("/{id}", status_code=status.HTTP_204_NO_CONTENT, summary="Delete weather data")
 def delete_post(id: int, db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
@@ -81,7 +102,7 @@ def update_post(id: int, updated_post: schemas.WeatherCreate, db: Session = Depe
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f"post with id: {id} does not exist")
     
-    
+
 
     if weather.owner_id != current_user.id:
         raise HTTPException(status_code=status.HTTP_403_FORBIDDEN,
@@ -95,7 +116,7 @@ def update_post(id: int, updated_post: schemas.WeatherCreate, db: Session = Depe
 
 
 @router.get("/weather-info/{city}", response_model=schemas.WeatherResponse)
-async def get_weather_info(city: str, db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
+def get_weather_info(city: str, db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
 
     weather = db.query(models.WeatherData).filter(models.WeatherData.city == city).first()
 
@@ -103,7 +124,7 @@ async def get_weather_info(city: str, db: Session = Depends(get_db), current_use
         return weather
 
     try:
-        weather_data = await fetch_weather(city)
+        weather_data = fetch_weather(city)
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
