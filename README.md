@@ -107,6 +107,23 @@ cd <repository_name>
       "detail": "User already exists"
     }
     ```
+- **Get User**: `/users/{id}`
+  - **Method**: `GET`
+  - **Description**: Get user.
+  - **Response**:
+    ```json
+    {
+      "id": 1,
+      "email": "user@example.com",
+      "created_at": "2024-12-04T12:00:00"
+    }
+    ```
+  - **Error Response**:
+    ```json
+    {
+      "detail": "User with id: {id} does not exist"
+    }
+    ```
 
 ### **Weather**
 - **Get All Weather Data**: `/weather`
