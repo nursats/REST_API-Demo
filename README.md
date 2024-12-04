@@ -32,7 +32,6 @@ cd <repository_name>
 
    SECRET_KEY=<your_secret_key>
    ALGORITHM=HS256
-   ACCESS_TOKEN_EXPIRE_MINUTES=30
 
    DATABASE_URL=postgresql://postgres:password@db:5432/fastapi_db
    ```
@@ -133,9 +132,8 @@ cd <repository_name>
     }
     ```
 
-### **Fetch Weather Information**
+- **Fetch Weather Information**:`/weather-info/{city}`
 
-- **Endpoint**: `/weather-info/{city}`
 - **Method**: `GET`
 - **Description**: Fetch weather information for a specific city. If the city exists in the local database, the data is returned from the database. Otherwise, it fetches data from the external weather API, stores it in the database, and then returns it.
 - **Headers**:
@@ -212,7 +210,3 @@ The API is also deployed on Vercel. Access it here:
 
 ## **License**
 This project is licensed under the MIT License.
-
----
-
-Let me know if there's anything you'd like to add or change! 😊
