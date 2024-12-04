@@ -118,11 +118,10 @@ def update_post(id: int, updated_post: schemas.WeatherCreate, db: Session = Depe
 @router.get("/weather-info/{city}", response_model=schemas.WeatherResponse)
 def get_weather_info(city: str, db: Session = Depends(get_db), current_user: int = Depends(oauth2.get_current_user)):
 
-    weather = db.query(models.WeatherData).filter(models.WeatherData.city == city).first()
+    weather = db.query(models.WeatherData).filter(models.WeatherData.city.lower() == city.lower()).first()
 
     if weather:
         return weather
-
     try:
         weather_data = fetch_weather(city)
     except Exception as e:
