@@ -2,6 +2,8 @@
 
 A RESTful API built with FastAPI for weather data integration. This API allows users to fetch weather data from an external API, manage the data using CRUD operations, and access it securely with JWT-based authentication.
 
+The API is deployed and accessible at: https://rest-api-demo-project.vercel.app
+
 ---
 
 ## **Features**
@@ -33,7 +35,6 @@ cd <repository_name>
 
    SECRET_KEY=<your_secret_key>
    ALGORITHM=HS256
-   ACCESS_TOKEN_EXPIRE_MINUTES=30
 
    DATABASE_URL=postgresql://postgres:password@db:5432/fastapi_db
    ```
@@ -221,7 +222,7 @@ cd <repository_name>
 
 ### **Backend (FastAPI)**: Deployed on Vercel
 The FastAPI backend is deployed on [Vercel](https://vercel.com). Access the deployed API here:
-- **Swagger UI**: [https://rest-api-demo-project.vercel.app/](https://rest-api-demo-project.vercel.app/docs)
+- **Swagger UI**: [https://rest-api-demo-project.vercel.app/docs](https://rest-api-demo-project.vercel.app/docs)
 - **Base URL**: `https://rest-api-demo-project.vercel.app/`
 
 ### **Database**: Deployed on Railway
