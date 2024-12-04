@@ -1,4 +1,5 @@
 from fastapi import APIRouter, HTTPException, Depends, Response, status
+from fastapi.responses import JSONResponse
 from sqlalchemy.orm import Session
 from typing import List, Optional
 from sqlalchemy import func
@@ -87,7 +88,10 @@ def delete_post(id: int, db: Session = Depends(get_db), current_user: int = Depe
     weather_query.delete(synchronize_session=False)
     db.commit()
 
-    return Response(status_code=status.HTTP_204_NO_CONTENT)
+    return JSONResponse(
+        status_code=status.HTTP_204_NO_CONTENT,
+        content={"detail": "Weather record deleted successfully."}
+        )
 
 
 @router.put("/{id}", response_model=schemas.WeatherBase, summary="Update city in weather data")

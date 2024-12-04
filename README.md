@@ -8,7 +8,7 @@ The API is deployed and accessible at: https://rest-api-demo-project.vercel.app
 
 ## **Features**
 - Integration with [OpenWeatherMap](https://openweathermap.org/api) to fetch weather data.
-- CRUD functionality for storing and managing weather data locally in PostgreSQL.
+- CRUD functionality for storing and managing weather data in a PostgreSQL database hosted in the cloud (via Railway).
 - Secure authentication using JSON Web Tokens (JWT).
 - User registration and authentication.
 - API documentation with Swagger UI.
@@ -255,3 +255,9 @@ The PostgreSQL database is hosted on [Railway](https://railway.app), and the bac
 - **Vercel**: Cloud deployment for FastAPI app.
 
 ---
+
+## Contact
+
+Nursat - [@nursatse](t.me/nursatse) - nursat.seitov12@gmail.com
+
+Project Link: [https://github.com/nursats/REST_API-Demo](https://github.com/nursats/REST_API-Demo)
