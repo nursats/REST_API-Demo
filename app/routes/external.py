@@ -6,3 +6,8 @@ router = APIRouter()
 @router.get("/test")
 def test_external_api(city: str = "Astana"):
     return fetch_weather(city)
+
+
+@router.get("/test")
+def test_external_api(city: str = "Astana"):
+    return fetch_weather(city)
