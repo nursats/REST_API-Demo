@@ -49,12 +49,12 @@ def create_weather(weather_request: schemas.WeatherCreate, db: Session = Depends
 
     city = weather_request.city
 
-    try:
-        weather_data = fetch_weather(city)
-    except Exception as e:
+    weather_data = fetch_weather(city)
+    
+    if "error" in weather_data:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"Failed to fetch weather data for city '{city}'. Error: {str(e)}"
+            detail=f"Failed to fetch weather data for city '{city}'. Error: {weather_data['error']}"
         )
 
     new_weather = models.WeatherData(
