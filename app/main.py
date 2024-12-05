@@ -39,4 +39,8 @@ app.include_router(crud.router)
 
 @app.get("/")
 def root():
-    return {"message": "welcome to my project"}
+    return {
+        "message": "welcome to my project",
+        "description": "This is a demo REST API project",
+        "contact": "nursat.seitov12@gmail.com"
+        }
