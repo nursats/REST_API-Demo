@@ -1,4 +1,3 @@
-import datetime
 from app.config import API_KEY, BASE_URL
 import requests
 
@@ -15,10 +14,7 @@ def fetch_weather(city: str):
     city_name = res["city"]["name"]
     temperature = res["list"][0]["main"]["temp"]
 
-    timestamp = res["list"][0]["dt"]  # Get the timestamp from the first weather data point
-    date = datetime.datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d %H:%M:%S')
-
-    return {"city": city_name, "temperature": temperature, "date":date}
+    return {"city": city_name, "temperature": temperature}
 
 
 
