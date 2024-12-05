@@ -14,7 +14,7 @@ def fetch_weather(city: str):
     city_name = res["city"]["name"]
     temperature = res["list"][0]["main"]["temp"]
 
-    return {"city": city_name, "temperature": temperature}
+    return res
 
 
 

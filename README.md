@@ -110,7 +110,7 @@ cd <repository_name>
     ```
 - **Get User**: `/users/{id}`
   - **Method**: `GET`
-  - **Description**: Get user.
+  - **Description**: Fetch user details by ID. Returns user info or 404 if not found.
   - **Response**:
     ```json
     {
@@ -258,6 +258,6 @@ The PostgreSQL database is hosted on [Railway](https://railway.app), and the bac
 
 ## Contact
 
-Nursat - [@nursatse](t.me/nursatse) - nursat.seitov12@gmail.com
+Nursat - [@nursatse](https://t.me/nursatse) - nursat.seitov12@gmail.com
 
 Project Link: [https://github.com/nursats/REST_API-Demo](https://github.com/nursats/REST_API-Demo)
