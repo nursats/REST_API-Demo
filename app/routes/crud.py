@@ -126,12 +126,13 @@ def get_weather_info(city: str, db: Session = Depends(get_db), current_user: int
 
     if weather:
         return weather
-    try:
-        weather_data = fetch_weather(city)
-    except Exception as e:
+
+    weather_data = fetch_weather(city)
+    
+    if "error" in weather_data:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
-            detail=f"Failed to fetch weather data for city '{city}'. Error: {str(e)}"
+            detail=f"Failed to fetch weather data for city '{city}'. Error: {weather_data['error']}"
         )
 
     new_weather = models.WeatherData(

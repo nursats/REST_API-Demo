@@ -30,4 +30,3 @@ def fetch_weather(city: str):
 
 
 
-
